@@ -1,14 +1,40 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Room LED Control
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-list>
+    <ion-list-header>RGB Values</ion-list-header>
+    <ion-item>
+      <ion-range [(ngModel)]="redValue" [min]='0' [max]='255' color="danger" (ionChange)="redChange()">
+      </ion-range>
+    </ion-item>
+    <ion-item>
+      <ion-range [(ngModel)]="greenValue" [min]='0' [max]='255' color="secondary" (ionChange)="greenChange()">
+      </ion-range>
+    </ion-item>
+    <ion-item>
+      <ion-range [(ngModel)]="blueValue" [min]='0' [max]='255' (ionChange)="blueChange()">
+      </ion-range>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-list-header>Configuration</ion-list-header>
+    <ion-item>
+      <ion-select [(ngModel)]="modeSelect" (ionChange)="modeChange()">
+        <ion-option value="0">Color Wipe</ion-option>
+        <ion-option value="1">Theater</ion-option>
+        <ion-option value="2">Rainbow</ion-option>
+        <ion-option value="3">Rainbow Cycle</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>IP Address</ion-label>
+      <ion-input [(ngModel)]="ipAddress" placeholder="IP Address"></ion-input>
+    </ion-item>
+  </ion-list>
 </ion-content>
